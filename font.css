@@ -1,0 +1,88 @@
+/* font.css */
+@font-face {
+    font-family: 'Warren Display';
+    src: url('fonts/WarrenDisplay-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Warren Text';
+    src: url('fonts/WarrenText-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+.custom-font {
+    font-family: 'Warren Display'; 
+    font-size: 10px; 
+}
+
+body {
+    font-family: serif;
+}
+
+.nav-link {
+    font-family: serif;
+}
+
+/* Configurações gerais do HTML e corpo */
+html {
+    overflow-x: hidden !important;
+    box-sizing: border-box;
+}
+
+*, :after, :before {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: var(--font-family-base); 
+    font-weight: var(--font-weight-regular); 
+    background-color: #fff;
+    overflow-x: hidden;
+}
+
+body, ul {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style-type: none;
+}
+
+/* Configurações do contêiner */
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* Definindo larguras máximas do contêiner para diferentes larguras de tela */
+@media (min-width: 576px) {
+    .container {
+        max-width: 85%;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 85%;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width: 85%;
+    }
+}
+
+@media (min-width: 1199px) {
+    .container {
+        max-width: 75%;
+    }
+}

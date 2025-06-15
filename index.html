@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <title>Calculadora de Juros Compostos | Jovem Investidor</title>
+    <meta name="description" content="Descubra o Poder dos Juros Compostos e a sua capacidade de impulsionar o seu patrimônio a longo prazo!">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="HubSpot">
+    <link rel="icon" href="images/logo_joveminvestidor.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="module.css">
+    <link rel="stylesheet" href="font.css">
+    <link rel="canonical" href="https://github.com/Vitor5252/calculadorajuroscompostos">
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2609615912389928"
+     crossorigin="anonymous"></script>
+    <style>
+        @font-face {
+            font-family: "Warren Display";
+            font-weight: 300;
+            src: url('fonts/fonte.otf') format('opentype');
+        }
+          
+        @font-face {
+            font-family: "Warren Text";
+            font-weight: 300;
+            src: url('fonts/fonte.otf') format('opentype');
+        }
+          
+        .container {
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        @media (min-width: 576px) {
+            .container {
+                max-width: 540px;
+            }
+        }
+        @media (min-width: 768px) {
+            .container {
+                max-width: 720px;
+            }
+        }
+        @media (min-width: 992px) {
+            .container {
+                max-width: 960px;
+            }
+        }
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1160px;
+            }
+        }
+
+        /* Estilos para ocultar navegação em dispositivos móveis */
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<!-- AVISO DE COOKIES -->
+<div id="cookie-banner">
+    <p>Utilizamos cookies para melhorar sua experiência. Ao continuar navegando, você concorda com nossa <a href="politica-de-privacidade.html" class="footer-link">Política de Privacidade</a>.</p>
+    <div class="button-container">
+        <button id="accept-cookies">Aceitar</button>
+        <button id="reject-cookies">Recusar</button>
+    </div>
+</div>
+<!---------------------->
+<!-- Cabeçalho -->
+ <body class="body">
+    <div class="header">
+        <div class="container header-container">
+            <a href="index.html">
+              <img class="logo" src="images/logo_joveminvestidor.png" alt="Logo Jovem Investidor" style="width: 130px; height: auto;">
+            </a>
+
+            <!-- Menu Hamburguer -->
+            <div class="menu-hamburguer">
+                <input type="checkbox" id="menu-toggle">
+                <label for="menu-toggle" class="menu-icon">
+                    <span></span>
+                </label>
+                <div class="menu">
+                    <br>
+                    <br>
+                    <hr>
+                    <a href="index.html">Início</a>
+                    <hr>
+                    <a href="quem-sou-eu.html">Quem sou eu?</a>
+                    <hr>
+                    <a href="contato.html">Contato</a>
+                    <hr>
+                </div>
+            </div>
+            <!--------------------->
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><span class="nav-separator">|</span></li>
+                    <li class="nav-item"><a href="index.html" class="nav-link">Início</a></li>
+                    <li class="nav-item"><span class="nav-separator">|</span></li>
+                    <li class="nav-item"><a href="quem-sou-eu.html" class="nav-link">Quem sou eu?</a></li>
+                    <li class="nav-item"><span class="nav-separator">|</span></li>
+                    <li class="nav-item"><a href="contato.html" class="nav-link">Contato</a></li>
+                    <li class="nav-item"><span class="nav-separator">|</span></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <!------------------------------>
+
+    <!-- Calculadora -->   
+    <section id="evaluate">
+        <div class="container">
+            <div class="text">
+                <h2>Calculadora de<br><span class="highlight-green">Juros Compostos</span></h2>
+                <p class="custom-font">Descubra o Poder dos Juros Compostos e a sua capacidade de <strong>impulsionar o seu patrimônio</strong> a longo prazo!</p>
+                <p class="custom-font">Desenvolvido por Vitor Vasconcellos Dias - Jovem Investidor</p>
+            </div>
+            <div class="form">
+                <!-- Quanto você tem para investir? -->
+                <div class="form-field">
+                    <label for="initialCapital">Quanto você tem para investir?</label>
+                    <input type="text" name="initial-capital" id="initialCapital" class="input-money" value="R$ 0,00" autocomplete="off" placeholder="R$ 0,00">
+                </div>
+                <div class="form-field">
+                    <label for="capitalByMonth">Quanto você pretende investir por mês?</label>
+                    <input type="text" name="capital-by-month" id="capitalByMonth" class="input-money" value="R$ 0,00" autocomplete="off" placeholder="R$ 0,00">
+                </div>
+                <div class="form-field">
+                    <label for="time">Por quanto tempo você deixaria investido?</label>
+                    <div class="form-align">
+                        <input type="number" name="time" id="time" value="0" autocomplete="off">
+                        <div class="options">
+                            <input type="radio" name="time-period" value="months" id="timePeriodMonths">
+                            <span>Meses</span>
+                            <input type="radio" name="time-period" value="years" id="timePeriodYears" checked>
+                            <span>Anos</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-field">
+                    <label for="profitabilityPercent">Taxa de Juros</label>
+                    <div class="form-align">
+                        <input type="text" name="profitability-percent" id="profitabilityPercent" class="input-percent" value="0,00 %" autocomplete="off">
+                        <div class="options">
+                            <input type="radio" name="period" value="by-month" id="profitabilityMonth">
+                            <span>Taxa Mensal</span>
+                            <input type="radio" name="period" value="by-year" id="profitabilityYear" checked>
+                            <span>Taxa Anual</span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="buttons">
+                    <a id="calculate">Calcular</a>
+                    <a id="clean">Limpar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+          
+            </div>
+        </div>
+</section>
+<section id="result">
+    <div class="container">
+        <div class="text">
+            <h2>Confira o resultado:</h2>
+        </div>
+        <div class="total">
+            <div class="line initial">
+                <span>Total Investido:</span>
+                <div class="rs-total-investido">R$0,00</div>
+            </div>
+            <div class="line initial">
+                <span>Juros Totais no Período Investido:</span>
+                <div class="rs-juros">R$0,00</div>
+            </div>
+            <div class="line final">
+                <span>Total Acumulado:</span>
+                <div class="rs-acumulado">R$0,00</div>
+            </div>
+            <div class="line rent-income">
+                <span>Renda Mensal Líquida:</span>
+                <div class="rs-rent-income">R$0,00</div>
+                <div class="observation">*Considerando o seu Total Acumulado e a Taxa de Juros.</div>
+            </div>            
+        </div>
+        <div class="buttons">
+            <div id="undo">Refazer o Cálculo</div>
+        </div>
+    </div>
+</section>
+
+                </div>
+            </div>
+        </div>
+</section></div>
+<!------------------------------>
+
+<!-- Perguntas e Respostas -->
+<section id="faq">
+    <div class="container">
+        <div class="faq-item">
+            <h3>O que são juros compostos?</h3>
+            <p>Juros compostos referem-se à uma forma de cálculo em investimentos ou empréstimos, onde os juros são aplicados não apenas ao valor inicial, mas também aos juros acumulados, ou seja, é o conceito de "juros sobre juros". Isso gera um crescimento exponencial ao longo do tempo, proporcionando maiores retornos para investidores ou custos mais altos para tomadores de empréstimos e financiamentos.</p>
+            <br>
+            <hr>
+        </div>
+        <div class="faq-item">
+            <h3>Como funciona a fórmula dos juros compostos?</h3>
+            <p>A fórmula para calcular os juros compostos é <strong>M = P(1 + i)^t</strong> onde:</p>
+            <p><strong>M</strong> - É o montante final</p>
+            <p><strong>P</strong> - É o capital principal</p>
+            <p><strong>i</strong> - É a taxa de juros por período</p>
+            <p><strong>t</strong> - É o número de períodos</p>
+            <br>
+            <hr>
+        </div>
+        <div class="faq-item">
+            <h3>O Poder dos Juros sobre Juros</h3>
+            <p>Os juros compostos têm o poder de impulsionar o crescimento do patrimônio ao longo do tempo, permitindo que os investimentos cresçam a uma taxa exponencial em comparação com os juros simples.</p>
+            <br>
+            <hr>
+        </div>
+        <div class="faq-item">
+            <h3>Qual a diferença entre juros simples e juros compostos?</h3>
+            <p>A principal diferença é que os juros simples são calculados apenas sobre o capital inicial, enquanto os juros compostos são calculados sobre o capital inicial mais os juros acumulados até o momento.</p>
+            <br>
+            <hr>
+        </div>
+        <div class="faq-item">
+            <h3>Quais estratégias podem ser adotadas para aproveitar ao máximo os juros compostos?</h3>
+            <p>Investir consistentemente, escolher investimentos com taxas de retorno superiores e reinvestir os ganhos são estratégias chave para maximizar os benefícios dos juros compostos.</p>
+        </div>
+        <div></div>
+        <br>
+        <hr>
+    </div>
+</section>
+<!------------------------------>
+
+<!-- Rodapé -->
+    
+<div class="footer-container">
+    <div class="footer-logo">
+        <img src="images/logo_joveminvestidor02.png" alt="Logo Jovem Investidor">
+    </div>
+    
+    <div class="social-icons">
+        <a href="https://www.instagram.com/joveminvestidor.io/" target="_blank" class="social-icon" rel="noopener"><img loading="lazy" src="images/logo_instagram.png" alt="Instagram"></a>
+        <a href="https://www.tiktok.com/@joveminvestidor.io?is_from_webapp=1&sender_device=pc" target="_blank" class="social-icon" rel="noopener"><img loading="lazy" src="images/logo_tiktok.png" alt="TikTok"></a>
+        <a href="https://www.linkedin.com/in/vitor-vasconcellos-dias-598a6220b/" target="_blank" class="social-icon" rel="noopener"><img loading="lazy" src="images/logo_linkedin.png" alt="Linkedin"></a>
+        <a href="https://www.youtube.com/channel/UCRfBbozTiBsotPI-F4Yplww" target="_blank" class="social-icon" rel="noopener"><img loading="lazy" src="images/logo_youtube.png" alt="Youtube"></a>
+    </div>
+        <a href="politica-de-privacidade.html" class="footer-link">Política de Privacidade</a>
+    <p class="footer-disclaimer">
+        A plataforma da Jovem Investidor é dedicada a fornecer ferramentas para auxiliar no planejamento financeiro, com foco especial em educação sobre juros compostos. É importante ressaltar que esse conteúdo tem o propósito educacional e informativo. Não nos responsabilizamos por quaisquer perdas, danos, custos ou lucros decorrentes de decisões tomadas com base no conteúdo deste site.
+    </p>
+</div>
+<!------------------------------>
+
+<!-- HubSpot Analitico -->
+<script type="text/javascript">
+var _hsq = _hsq || [];
+_hsq.push(["setContentType", "landing-page"]);
+_hsq.push(["setCanonicalUrl", "https:\/\/lp.warren.com.br\/calculadora-juros-compostos"]);
+_hsq.push(["setPageId", "85370401685"]);
+_hsq.push(["setContentMetadata", {
+    "contentPageId": 85370401685,
+    "legacyPageId": "85370401685",
+    "contentFolderId": null,
+    "contentGroupId": null,
+    "abTestId": null,
+    "languageVariantId": 85370401685,
+    "languageCode": "pt-br",
+}]);
+</script>
+<!------------------------------>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="main.js" defer></script>
+</body></html>

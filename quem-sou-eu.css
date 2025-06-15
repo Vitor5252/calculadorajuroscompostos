@@ -1,0 +1,228 @@
+@import url('font.css');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 100%;
+    height: 100px;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.nav {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-item {
+    margin-left: 30px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #333;
+    font-family: serif;
+    font-weight: 600;
+    padding: 10px 15px;
+    transition: color 0.3s, background-color 0.3s, transform 0.3s;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.nav-link:hover, .nav-link:focus {
+    color: #ffffff;
+    background-color: #01ce5d;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .header .logo {
+        transform: scale(0.8);
+    }
+
+    .header-container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 10px;
+    }
+
+    .nav {
+        width: 100%;
+    }
+
+    .nav-list {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    .nav-item {
+        margin: 0;
+    }
+
+    .nav-link {
+        font-size: 14px;
+        padding: 10px 5px;
+    }
+}
+
+.body {
+    padding-top: 100px;
+}
+
+#about-me {
+    background-color: #28a745;
+    color: white;
+    padding: 40px 0; 
+    text-align: center;
+}
+
+#about-me .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1200px; 
+    margin: 0 auto; 
+}
+
+#about-me h1 {
+    font-size: 36px;
+    font-family: "Warren Display", sans-serif;
+    font-weight: 800;
+    text-align: center;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #00e676, #1de9b6); /* tons mais claros */
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 2px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+#about-me h1::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: #00e676;
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+#about-me .content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto; 
+}
+
+#about-me .text {
+    flex: 1;
+    font-size: 18px;
+    text-align: left;
+    max-width: 600px; 
+    margin-right: 20px; 
+}
+
+#about-me .image {
+    flex: 1;
+    max-width: 600px; 
+}
+
+#about-me .image img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
+
+.footer-container {
+    background-color: #272727;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.footer-logo img {
+    max-width: 180px;
+    margin-bottom: 20px;
+}
+
+.footer-disclaimer {
+    font-size: 14px;
+    color: #aaaaaa;
+    max-width: 600px;
+    margin: 20px auto 0;
+    line-height: 1.4;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.social-icon {
+    margin: 0 10px;
+}
+
+.social-icon img {
+    transition: transform 0.3s ease;
+}
+
+.social-icon:hover img {
+    transform: scale(1.2);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    #about-me .content {
+        flex-direction: column; 
+        text-align: center; 
+    }
+
+    #about-me .text {
+        text-align: center; 
+        margin-right: 0; 
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-disclaimer {
+        font-size: 12px;
+    }
+}
