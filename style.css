@@ -449,14 +449,8 @@ input[type="radio"] {
 
 /* Mudando a cor dos "Juros Compostos" */
 .highlight-green {
-    font-size: 48px;
-    font-weight: 800;
-    font-family: "Warren Display", sans-serif;
     color: #01ce5d;
-    margin-bottom: 10px;
-    text-align: center;
 }
-
 
 /* Centralizando as informações no celular */
 @media (max-width: 768px) {
