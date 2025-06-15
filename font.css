@@ -1,7 +1,8 @@
 /* font.css */
 @font-face {
     font-family: 'Warren Display';
-    src: url('fonts/WarrenDisplay-Regular.otf') format('opentype');
+    src: url('fonts/WarrenDisplay-Regular.woff2') format('woff2'),
+         url('fonts/WarrenDisplay-Regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -9,7 +10,8 @@
 
 @font-face {
     font-family: 'Warren Text';
-    src: url('fonts/WarrenText-Regular.otf') format('opentype');
+    src: url('fonts/WarrenText-Regular.woff2') format('woff2'),
+         url('fonts/WarrenText-Regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
