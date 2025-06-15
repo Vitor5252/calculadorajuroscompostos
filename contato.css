@@ -101,9 +101,9 @@ body {
 }
 
 #contact-section {
-    background-color: #28a745; 
-    color: white;
-    padding: 40px 20px; 
+    background: linear-gradient(135deg, #00c853, #ccf3e0); /* mesmo tom da home */
+    color: #1b1b1b; /* texto bem visível */
+    padding: 60px 20px;
     text-align: center;
     min-height: 60vh;
     display: flex;
@@ -118,45 +118,58 @@ body {
     align-items: center;
     max-width: 800px;
     width: 100%;
-    margin: 0 auto; 
+    margin: 0 auto;
 }
 
 #contact-section h1 {
-    font-size: 48px;
+    font-size: 36px;
+    font-family: "Warren Display", sans-serif;
+    font-weight: 800;
+    color: white;
     margin-bottom: 20px;
-    margin-top: 15px;
-    font-family: serif;
-    text-align: center; 
+    position: relative;
+}
+
+#contact-section h1::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: white;
+    margin: 10px auto 0;
+    border-radius: 2px;
 }
 
 #contact-section p {
     font-size: 18px;
-    margin-bottom: 20px;
+    color: white;
+    margin-bottom: 25px;
 }
 
 .contact-box {
     background-color: white;
-    color: #28a745;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    color: #00c853;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     text-align: center;
-    margin-bottom: 20px;
-    transition: transform 0.3s ease; 
-}
-
-.contact-box:hover {
-    transform: scale(1.05); 
+    max-width: 600px;
+    transition: transform 0.3s ease;
 }
 
 .contact-box h2 {
-    font-size: 24px;
+    font-size: 22px;
     margin-bottom: 10px;
-    font-family: serif;
+    font-family: "Warren Text", sans-serif;
+    color: #00c853;
 }
 
 .contact-box p {
-    font-size: 20px;
+    font-size: 16px;
+    
+    color: #00c853 !important;
+    opacity: 1 !important;
+    margin-bottom: 10px;
 }
 
 .social-contact {
@@ -164,9 +177,11 @@ body {
 }
 
 .social-contact h2 {
-    font-size: 24px;
+    font-size: 22px;
     margin-bottom: 20px;
-    font-family: serif;
+    font-family: "Warren Display", sans-serif;
+    color: #e0ffe8; /* tom suave que harmoniza com o fundo */
+    font-weight: 500;
 }
 
 .social-icons {
@@ -180,11 +195,19 @@ body {
 }
 
 .social-icon img {
+    filter: brightness(0) invert(1); /* força ícones brancos */
     transition: transform 0.3s ease;
+    height: 28px;
+    width: auto;
 }
 
 .social-icon:hover img {
     transform: scale(1.2);
+}
+
+.social-icon:hover img {
+    transform: scale(1.2);
+    filter: brightness(0) invert(0.8);
 }
 
 .footer-container {
