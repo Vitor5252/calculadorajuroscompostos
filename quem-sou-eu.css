@@ -1,3 +1,242 @@
+@import url('font.css');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 100%;
+    height: 100px;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.nav {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-item {
+    margin-left: 30px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #333;
+    font-family: serif;
+    font-weight: 600;
+    padding: 10px 15px;
+    transition: color 0.3s, background-color 0.3s, transform 0.3s;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.nav-link:hover, .nav-link:focus {
+    color: #ffffff;
+    background-color: #01ce5d;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .header .logo {
+        transform: scale(0.8);
+    }
+
+    .header-container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 10px;
+    }
+
+    .nav {
+        width: 100%;
+    }
+
+    .nav-list {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    .nav-item {
+        margin: 0;
+    }
+
+    .nav-link {
+        font-size: 14px;
+        padding: 10px 5px;
+    }
+}
+
+.body {
+    padding-top: 100px;
+}
+
+#about-me {
+    background: linear-gradient(135deg, #00c853, #ccf3e0);
+    color: #1b1b1b;
+    padding: 60px 20px;
+    text-align: center;
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#about-me .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1200px; 
+    margin: 0 auto; 
+}
+
+#about-me h1 {
+    font-size: 36px;
+    font-family: "Warren Display", sans-serif;
+    font-weight: 800;
+    color: white;
+    text-align: center;
+    letter-spacing: 1px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+#about-me h1::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: white;
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+
+#about-me .content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto; 
+}
+
+#about-me .text {
+    flex: 1;
+    font-size: 18px;
+    text-align: left;
+    max-width: 600px; 
+    margin-right: 20px; 
+}
+
+#about-me .image {
+    flex: 1;
+    max-width: 600px; 
+}
+
+#about-me .image img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
+
+#about-me p {
+    font-size: 18px;
+    font-family: serif;
+    color: #1b1b1b;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.footer-container {
+    background-color: #272727;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.footer-logo img {
+    max-width: 180px;
+    margin-bottom: 20px;
+}
+
+.footer-disclaimer {
+    font-size: 14px;
+    color: #aaaaaa;
+    max-width: 600px;
+    margin: 20px auto 0;
+    line-height: 1.4;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.social-icon {
+    margin: 0 10px;
+}
+
+.social-icon img {
+    transition: transform 0.3s ease;
+}
+
+.social-icon:hover img {
+    transform: scale(1.2);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    #about-me .content {
+        flex-direction: column; 
+        text-align: center; 
+    }
+
+    #about-me .text {
+        text-align: center; 
+        margin-right: 0; 
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-disclaimer {
+        font-size: 12px;
+    }
+}
+
 @media (max-width: 768px) {
     #about-me h1 {
         font-size: 36px;
@@ -24,5 +263,23 @@
     #about-me p {
         font-family: "Warren Text", sans-serif;
         font-size: 17px;
+    }
+}
+
+@media (max-width: 768px) {
+    .menu a {
+        display: block;
+        padding: 15px 20px;
+        text-decoration: none;
+        color: #333;
+        font-size: 18px;
+        margin-bottom: 10px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        font-family: 'Warren Display', serif;
+    }
+
+    .menu a:hover {
+        background-color: #d9d9d9;
+        color: #000;
     }
 }
