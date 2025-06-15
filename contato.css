@@ -232,7 +232,11 @@ body {
 /* Responsividade */
 @media (max-width: 768px) {
     #contact-section h1 {
-        font-size: 36px;
+        font-size: 48px;
+        margin-bottom: 20px;
+        margin-top: 15px;
+        font-family: "Warren Display", sans-serif;
+        text-align: center;
     }
 
     #contact-section p {
@@ -245,13 +249,5 @@ body {
 
     .contact-box p {
         font-size: 18px;
-    }
-    
-    #contact-section h1 {
-        font-size: 48px;
-        margin-bottom: 20px;
-        margin-top: 15px;
-        font-family: serif;
-        text-align: center; 
     }
 }
