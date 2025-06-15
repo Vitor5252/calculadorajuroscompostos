@@ -100,10 +100,15 @@ body {
 }
 
 #about-me {
-    background-color: #28a745;
-    color: white;
-    padding: 40px 0; 
+    background: linear-gradient(135deg, #00c853, #ccf3e0);
+    color: #1b1b1b;
+    padding: 60px 20px;
     text-align: center;
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 #about-me .container {
@@ -118,13 +123,9 @@ body {
     font-size: 36px;
     font-family: "Warren Display", sans-serif;
     font-weight: 800;
+    color: white;
     text-align: center;
-    text-transform: uppercase;
-    background: linear-gradient(90deg, #00e676, #1de9b6); /* tons mais claros */
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     margin-top: 20px;
     margin-bottom: 30px;
     position: relative;
@@ -135,10 +136,11 @@ body {
     display: block;
     width: 60px;
     height: 4px;
-    background-color: #00e676;
+    background-color: white;
     margin: 10px auto 0;
     border-radius: 2px;
 }
+
 
 #about-me .content {
     display: flex;
@@ -168,6 +170,14 @@ body {
     width: 100%;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
+
+#about-me p {
+    font-size: 18px;
+    font-family: serif;
+    color: #1b1b1b;
+    line-height: 1.6;
+    margin-bottom: 15px;
 }
 
 .footer-container {
