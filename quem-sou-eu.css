@@ -239,11 +239,25 @@ body {
 
 @media (max-width: 768px) {
     #about-me h1 {
-        font-size: 32px;
+        font-size: 36px;
         font-family: "Warren Display", sans-serif;
+        font-weight: 800;
+        color: white;
         text-align: center;
+        letter-spacing: 1px;
         margin-top: 20px;
-        margin-bottom: 25px;
+        margin-bottom: 30px;
+        position: relative;
+    }
+
+    #about-me h1::after {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 4px;
+        background-color: white;
+        margin: 10px auto 0;
+        border-radius: 2px;
     }
 
     #about-me p {
