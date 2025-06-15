@@ -236,3 +236,18 @@ body {
         font-size: 12px;
     }
 }
+
+@media (max-width: 768px) {
+    #about-me h1 {
+        font-size: 32px;
+        font-family: "Warren Display", sans-serif;
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 25px;
+    }
+
+    #about-me p {
+        font-family: "Warren Text", serif;
+        font-size: 17px;
+    }
+}
