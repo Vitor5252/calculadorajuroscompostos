@@ -90,30 +90,26 @@ calculateButton.addEventListener("click", (e) => {
     document.querySelector('.rs-juros').innerHTML = "R$ " + formatter.format(juros_compostos_total);
     document.querySelector('.rs-acumulado').innerHTML = "R$ " + formatter.format(valorFinal);
     document.querySelector('.rs-rent-income').innerHTML = "R$ " + formatter.format(rendaMensalLiquida);
-    
-    // Mostrar resultado
-    const resultSection = document.getElementById("result");
-    resultSection.style.display = "block";
-    
-    // Força o reflow (garante que o layout atualize antes de rolar)
-    resultSection.offsetHeight;
-    
+
+    document.querySelector('#result').style.display = "block";
+
     // Desfocar o campo ativo e focar no corpo para fechar o teclado
     document.activeElement.blur();
     document.body.focus();
-    
-    // Agora faz o scroll com um pequeno atraso
-    setTimeout(() => {
-        const headerOffset = 100;
-        const elementPosition = resultSection.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-    
-        window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-        });
-    }, 250); // tempo mais confiável para PC
 
+    // Adicionar um pequeno atraso antes de rolar para a seção de resultado
+    setTimeout(() => {
+    const resultElement = document.querySelector('#result');
+    const headerOffset = 100;
+    const elementPosition = resultElement.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+    window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+    });
+}, 125);
+});
 
     undoButton.addEventListener("click", (e) => {
         e.preventDefault();
