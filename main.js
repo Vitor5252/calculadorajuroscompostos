@@ -91,25 +91,23 @@ calculateButton.addEventListener("click", (e) => {
     document.querySelector('.rs-acumulado').innerHTML = "R$ " + formatter.format(valorFinal);
     document.querySelector('.rs-rent-income').innerHTML = "R$ " + formatter.format(rendaMensalLiquida);
 
-    document.querySelector('#result').style.display = "block";
+    const resultSection = document.getElementById("result");
+    resultSection.style.display = "block";
 
-    // Desfocar o campo ativo e focar no corpo para fechar o teclado
-    document.activeElement.blur();
-    document.body.focus();
+    // Força o navegador a reconhecer o novo layout
+    resultSection.offsetHeight;
 
-    // Adicionar um pequeno atraso antes de rolar para a seção de resultado
     setTimeout(() => {
-    const resultElement = document.querySelector('#result');
-    const headerOffset = 100;
-    const elementPosition = resultElement.getBoundingClientRect().top;
-    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        const headerOffset = 100;
+        const elementPosition = resultSection.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
-    window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-    });
-}, 125);
-});
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+        });
+    }, 250); // delay aumentado de 125 → 250ms
+
 
     undoButton.addEventListener("click", (e) => {
         e.preventDefault();
