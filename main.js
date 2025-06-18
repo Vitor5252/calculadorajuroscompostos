@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
     // Função para adicionar os placeholders formatados
     function addPlaceholders() {
         document.getElementById('initialCapital').value = "";
@@ -13,15 +13,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     addPlaceholders();
 
-    // Remove placeholder ao focar
+    
     function removePlaceholder(e) {
         e.target.placeholder = "";
     }
 
-    // Restaura placeholder se campo estiver vazio
+    // Função para restaurar os placeholders se o campo estiver vazio
     function restorePlaceholder(e) {
         if (e.target.value === "") {
-            if (["initialCapital", "capitalByMonth", "profitabilityPercent"].includes(e.target.id)) {
+            if (e.target.id === "initialCapital" || e.target.id === "capitalByMonth" || e.target.id === "profitabilityPercent") {
                 e.target.placeholder = "0,00";
             } else if (e.target.id === "time") {
                 e.target.placeholder = "0";
@@ -29,139 +29,139 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Adiciona eventos de foco e blur nos inputs
-    ["initialCapital", "capitalByMonth", "time", "profitabilityPercent"].forEach(id => {
-        document.getElementById(id).addEventListener('focus', removePlaceholder);
-        document.getElementById(id).addEventListener('blur', restorePlaceholder);
-    });
+    // Adiciona os eventos de foco e desfoque aos campos de entrada
+    document.getElementById('initialCapital').addEventListener('focus', removePlaceholder);
+    document.getElementById('capitalByMonth').addEventListener('focus', removePlaceholder);
+    document.getElementById('time').addEventListener('focus', removePlaceholder);
+    document.getElementById('profitabilityPercent').addEventListener('focus', removePlaceholder);
 
-    // Converte moeda formatada para número
+    document.getElementById('initialCapital').addEventListener('blur', restorePlaceholder);
+    document.getElementById('capitalByMonth').addEventListener('blur', restorePlaceholder);
+    document.getElementById('time').addEventListener('blur', restorePlaceholder);
+    document.getElementById('profitabilityPercent').addEventListener('blur', restorePlaceholder);
+    
+    // Função para remover formatação monetária e converter para número
     function parseCurrency(value) {
         return parseFloat(value.replace(/[R$\s\.]/g, '').replace(',', '.'));
     }
 
-    // Seleciona os botões
-    const calculateButton = document.querySelector("#calculate");
-    const cleanButton = document.querySelector("#clean");
-    const undoButton = document.querySelector("#undo");
+    // Cálculo de Juros Compostos
+    var calculateButton = document.querySelector("#calculate");
+    var cleanButton = document.querySelector("#clean");
+    var undoButton = document.querySelector("#undo");
 
     const formatter = new Intl.NumberFormat('pt-BR', {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2,
     });
 
-    // Evento ao clicar em "Calcular"
-    calculateButton.addEventListener("click", (e) => {
-        e.preventDefault();
+calculateButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    var capitalInicial = parseCurrency(document.querySelector("#initialCapital").value) || 0;
+    var investimentoMensal = parseCurrency(document.querySelector("#capitalByMonth").value) || 0;
+    var tempo = parseInt(document.querySelector("#time").value) || 0;
+    var rentabilidade = parseFloat(document.querySelector("#profitabilityPercent").value.replace(/,/g, '.')) || 0;
+    var porAno = document.querySelector("#profitabilityYear").checked;
+    var tempoEmMeses = tempo;
 
-        // Captura e converte os valores
-        const capitalInicial = parseCurrency(document.querySelector("#initialCapital").value) || 0;
-        const investimentoMensal = parseCurrency(document.querySelector("#capitalByMonth").value) || 0;
-        const tempo = parseInt(document.querySelector("#time").value) || 0;
-        let rentabilidade = parseFloat(document.querySelector("#profitabilityPercent").value.replace(/,/g, '.')) || 0;
-        const porAno = document.querySelector("#profitabilityYear").checked;
-        let tempoEmMeses = tempo;
+    if (document.querySelector("#timePeriodYears").checked) {
+        tempoEmMeses = tempo * 12; // Converte anos em meses
+    }
 
-        // Converte tempo em anos para meses se necessário
-        if (document.querySelector("#timePeriodYears").checked) {
-            tempoEmMeses = tempo * 12;
-        }
+    if (porAno) {
+        rentabilidade = rentabilidade / 12; // Converte taxa anual em mensal
+    }
 
-        // Converte rentabilidade anual para mensal
-        if (porAno) {
-            rentabilidade /= 12;
-        }
+    rentabilidade /= 100; // Converte percentual para decimal
 
-        rentabilidade /= 100; // Converte de % para decimal
+    var valorFinal = capitalInicial;
+    var juros_compostos_total = 0;
 
-        let valorFinal = capitalInicial;
-        let juros_compostos_total = 0;
+    for (var i = 1; i <= tempoEmMeses; i++) {
+        var juros_compostos = valorFinal * rentabilidade;
+        juros_compostos_total += juros_compostos;
+        valorFinal += investimentoMensal + juros_compostos;
+    }
 
-        // Calcula juros compostos mês a mês
-        for (let i = 1; i <= tempoEmMeses; i++) {
-            const juros = valorFinal * rentabilidade;
-            juros_compostos_total += juros;
-            valorFinal += investimentoMensal + juros;
-        }
+    var investimentoTotal = capitalInicial + (investimentoMensal * tempoEmMeses);
+    var rendaMensalLiquida = valorFinal * rentabilidade * (1 - 0.225); // Desconta o imposto de 22,5%
 
-        const investimentoTotal = capitalInicial + (investimentoMensal * tempoEmMeses);
-        const rendaMensalLiquida = valorFinal * rentabilidade * (1 - 0.225); // Imposto de 22,5%
+    document.querySelector('.rs-total-investido').innerHTML = "R$ " + formatter.format(investimentoTotal);
+    document.querySelector('.rs-juros').innerHTML = "R$ " + formatter.format(juros_compostos_total);
+    document.querySelector('.rs-acumulado').innerHTML = "R$ " + formatter.format(valorFinal);
+    document.querySelector('.rs-rent-income').innerHTML = "R$ " + formatter.format(rendaMensalLiquida);
+    
+    // Mostrar resultado
+    const resultSection = document.getElementById("result");
+    resultSection.style.display = "block";
+    
+    // Força o reflow (garante que o layout atualize antes de rolar)
+    resultSection.offsetHeight;
+    
+    // Desfocar o campo ativo e focar no corpo para fechar o teclado
+    document.activeElement.blur();
+    document.body.focus();
+    
+    // Agora faz o scroll com um pequeno atraso
+    setTimeout(() => {
+        const headerOffset = 100;
+        const elementPosition = resultSection.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+    
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+        });
+    }, 250); // tempo mais confiável para PC
 
-        // Atualiza os resultados no DOM
-        document.querySelector('.rs-total-investido').innerHTML = "R$ " + formatter.format(investimentoTotal);
-        document.querySelector('.rs-juros').innerHTML = "R$ " + formatter.format(juros_compostos_total);
-        document.querySelector('.rs-acumulado').innerHTML = "R$ " + formatter.format(valorFinal);
-        document.querySelector('.rs-rent-income').innerHTML = "R$ " + formatter.format(rendaMensalLiquida);
 
-        const resultSection = document.getElementById("result");
-        resultSection.style.display = "block";
-
-        // Força o navegador a reconhecer a mudança
-        resultSection.offsetHeight;
-
-        // Scroll suave até a seção de resultados
-        setTimeout(() => {
-            const headerOffset = 100;
-            const elementPosition = resultSection.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: 'smooth'
-            });
-        }, 250);
-    });
-
-    // Botão "Voltar"
     undoButton.addEventListener("click", (e) => {
         e.preventDefault();
         document.querySelector('#result').style.display = "none";
-        document.querySelector('#evaluate').style.display = "block";
-
-        // Animação suave para voltar ao formulário
+        document.querySelector('#evaluate').style.display = "block";  
         $('html, body').animate({
             scrollTop: $("#evaluate").offset().top - window.innerHeight + $("#evaluate").outerHeight() / 2
-        }, 50);
+        }, 50); 
     });
 
-    // Botão "Limpar"
     cleanButton.addEventListener("click", (e) => {
         e.preventDefault();
         document.querySelector("#initialCapital").value = "";
         document.querySelector("#capitalByMonth").value = "";
         document.querySelector("#time").value = "";
         document.querySelector("#profitabilityPercent").value = "";
-        addPlaceholders();
+        addPlaceholders(); 
     });
 
-    // Marca o carregamento final da página
     document.body.classList.add('loaded');
 
-    // Cookie banner
-    const cookieBanner = document.getElementById('cookie-banner');
-    const acceptCookiesBtn = document.getElementById('accept-cookies');
-    const rejectCookiesBtn = document.getElementById('reject-cookies');
+    var cookieBanner = document.getElementById('cookie-banner');
+    var acceptCookiesBtn = document.getElementById('accept-cookies');
+    var rejectCookiesBtn = document.getElementById('reject-cookies');
 
-    const cookiesAccepted = localStorage.getItem('cookiesAccepted');
+    // Verificar se o usuário já aceitou/rejeitou os cookies anteriormente
+    var cookiesAccepted = localStorage.getItem('cookiesAccepted');
 
     if (cookiesAccepted === 'true') {
         cookieBanner.style.display = 'none';
-    } else if (cookiesAccepted !== 'false') {
+    } else if (cookiesAccepted === 'false') {
+        
+    } else {
         cookieBanner.style.display = 'block';
     }
 
-    acceptCookiesBtn.addEventListener('click', () => {
+    acceptCookiesBtn.addEventListener('click', function() {
         localStorage.setItem('cookiesAccepted', 'true');
         cookieBanner.style.display = 'none';
     });
 
-    rejectCookiesBtn.addEventListener('click', () => {
+    rejectCookiesBtn.addEventListener('click', function() {
         localStorage.setItem('cookiesAccepted', 'false');
         cookieBanner.style.display = 'none';
     });
 
-    // Efeito no header ao rolar
-    window.addEventListener('scroll', () => {
+    // Adiciona a funcionalidade de scroll do cabeçalho
+    window.addEventListener('scroll', function() {
         const header = document.querySelector('.header');
         if (window.scrollY > 50) {
             header.classList.add('header-scrolled');
@@ -170,6 +170,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
 
 document.addEventListener("DOMContentLoaded", function() {
     const inputMoneyFields = document.querySelectorAll('.input-money');
